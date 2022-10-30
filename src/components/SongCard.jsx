@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import PlayPause from './PlayPause';
 
-function SongCard({ song, i }) {
-  const activeSong = 'Test';
+function SongCard({ song, isPlaying, activeSong, i, data }) {
+  const dispatch = useDispatch();
+
+  const handlePause = () => {
+
+  };
+  const handlePlay = () => {
+
+  };
+
   return (
     <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
       <div className="relative w-full h-56 group">
@@ -11,7 +20,13 @@ function SongCard({ song, i }) {
           ? 'flex bg-black bg-opacity-70'
           : 'hidden'}`}
         >
-          <PlayPause />
+          <PlayPause
+            song={song}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            handlePause={handlePause}
+            handlePlay={handlePlay}
+          />
         </div>
         <img src={song?.images?.coverart} alt="song_img" />
       </div>
