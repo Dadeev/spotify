@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PlayPause from './PlayPause';
+import { playPause, setActiveSong } from '../redux/features/playerSlice';
 
 function SongCard({ song, isPlaying, activeSong, i, data }) {
   const dispatch = useDispatch();
 
   const handlePause = () => {
-
+    dispatch(playPause(false));
   };
   const handlePlay = () => {
-
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
   };
 
   return (
